@@ -8,4 +8,8 @@ def create_app(config=None):
     @app.route("/")
     def hello():
         return "Hello World!"
+
+    from user.views import user_page
+    app.register_blueprint(user_page, url_prefix="/user")
+
     return app
