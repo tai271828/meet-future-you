@@ -6,7 +6,7 @@
         <h3>
             Sign Up
         </h3>
-       {% from *_formhelpers.html" import render_field %}
+       {% from "_formhelpers.html" import render_field %}
        <form method="POST" action="{{ url_for('user_page.signup')}}">
 
            {{ form.csrf_token }}
