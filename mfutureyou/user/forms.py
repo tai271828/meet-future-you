@@ -8,6 +8,6 @@ class RegistrationForm(FlaskForm):
     email = EmailField('Email Address', [validators.DataRequired(), validators.Email()])
     password = PasswordField('New Password', [
         validators.DataRequired(),
-        validators.Equalto('confirm', message='Passwords must match')
+        validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
