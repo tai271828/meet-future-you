@@ -13,4 +13,4 @@ def signup():
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
         return '{} Signed up!'.format(form.name.data)
-    return render_template('user/signup.html')
+    return render_template('user/signup.html', form=form)
