@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import Form, StringField, PasswordField, validators
+from wtforms import Form, StringField, PasswordField, validators, ValidationError
 from wtforms.fields.html5 import EmailField
 from user.models import User
 
@@ -11,3 +11,7 @@ class RegistrationForm(FlaskForm):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
+
+    def validate_email(FlaskForm, field):
+        if User.objects.filter(email=field.data).first():
+            raise ValidationError('Email address already in use')
