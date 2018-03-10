@@ -13,5 +13,5 @@ class RegistrationForm(FlaskForm):
     confirm = PasswordField('Repeat Password')
 
     def validate_email(FlaskForm, field):
-        if User.Objects.filter(email=field.data).first():
+        if User.objects.filter(email=field.data).first():
             raise ValidationError('Email address already in use')
