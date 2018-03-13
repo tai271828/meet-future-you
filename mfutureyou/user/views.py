@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, session, url_for
 import bcrypt
 from user.models import User
 from user.forms import RegistrationForm, LoginForm
@@ -24,6 +24,10 @@ def login():
 
     return render_template('user/login.html', form=form, error=error)
 
+@user_page.route('/logout')
+def logout():
+    session.pop('email')
+    return redirect(url_for('user_page.login'))
 
 @user_page.route('/signup', methods=['GET', 'POST'])
 def signup():
