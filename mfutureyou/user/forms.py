@@ -15,3 +15,9 @@ class RegistrationForm(FlaskForm):
     def validate_email(FlaskForm, field):
         if User.objects.filter(email=field.data).first():
             raise ValidationError('Email address already in use')
+
+
+class LoginForm(FlaskForm):
+    email = EmailField('Email Address:', [validators.DataRequired(), validators.Email()])
+    password = PasswordField('Password', [validators.DataRequired()])
+
